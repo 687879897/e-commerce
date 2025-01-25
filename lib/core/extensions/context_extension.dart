@@ -2,6 +2,8 @@ import 'package:asroo_store/core/style/theme/assets_extension.dart';
 import 'package:asroo_store/core/style/theme/color_extension.dart';
 import 'package:flutter/material.dart';
 
+import '../language/app_localizations.dart';
+
 extension ContextExt on BuildContext {
   //color
   MyColors get color => Theme.of(this).extension<MyColors>()!;
@@ -13,9 +15,9 @@ extension ContextExt on BuildContext {
   TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
 //Language
-//   String translate(String langkey) {
-//     return AppLocalizations.of(this)!.translate(langkey).toString();
-//   }
+  String translate(String langkey) {
+    return AppLocalizations.of(this)!.translate(langkey).toString();
+  }
 
   //Navigation
 

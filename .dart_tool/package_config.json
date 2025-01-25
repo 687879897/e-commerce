@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "ansicolor",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/ansicolor-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/archive-4.0.2",
       "packageUri": "lib/",
@@ -74,6 +80,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/csslib-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
@@ -140,6 +152,18 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///D:/sdk/flutter/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.3.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "flutter_screenutil",
       "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.9.3",
       "packageUri": "lib/",
@@ -158,10 +182,22 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "html",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/html-0.15.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "image",
       "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.5.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "js",
@@ -278,6 +314,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "universal_io",
+      "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/oo/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -314,7 +356,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2025-01-24T14:58:50.077656Z",
+  "generated": "2025-01-25T21:35:38.267874Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }

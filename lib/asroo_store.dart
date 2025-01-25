@@ -1,3 +1,4 @@
+import 'package:asroo_store/core/language/app_localizations_setup.dart';
 import 'package:asroo_store/core/routes/app_routes.dart';
 import 'package:asroo_store/core/style/theme/app_theme.dart';
 import 'package:asroo_store/features/testone.dart';
@@ -24,14 +25,26 @@ class AsrooStoreApp extends StatelessWidget {
               title: 'Asroo Store',
               debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
               theme: themeLight(),
+              locale: const Locale("en"),
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
+              localizationsDelegates:
+              AppLocalizationsSetup.localizationsDelegates,
+              localeResolutionCallback:
+              AppLocalizationsSetup.localeResolutionCallback,
+
 
               builder: (context, widget) {
-                return Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return widget!;
-                    },
+                return GestureDetector(
+                  onTap: (){
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return widget!;
+                      },
+                    ),
                   ),
                 );
               },
