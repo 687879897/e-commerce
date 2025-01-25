@@ -1,4 +1,5 @@
 import 'package:asroo_store/core/routes/app_routes.dart';
+import 'package:asroo_store/core/style/theme/app_theme.dart';
 import 'package:asroo_store/features/testone.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +23,8 @@ class AsrooStoreApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Asroo Store',
               debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
+              theme: themeLight(),
+
               builder: (context, widget) {
                 return Scaffold(
                   body: Builder(
