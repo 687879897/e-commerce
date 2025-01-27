@@ -28,6 +28,7 @@ dependencies:
   connectivity_plus: ^5.0.2
   very_good_analysis: ^5.1.0
   flutter_native_splash: ^2.3.7
+  animate_do: ^3.3.4
 
 dev_dependencies:
   flutter_test:
