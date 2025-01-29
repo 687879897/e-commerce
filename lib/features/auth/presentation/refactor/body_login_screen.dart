@@ -3,6 +3,7 @@ import 'package:asroo_store/core/extensions/context_extension.dart';
 import 'package:asroo_store/core/language/lang_keys.dart';
 import 'package:asroo_store/features/auth/presentation/widgets/auth_title_info.dart';
 import 'package:asroo_store/features/auth/presentation/widgets/dark_and_lang_buttons.dart';
+import 'package:asroo_store/features/auth/presentation/widgets/login/login_button.dart';
 import 'package:asroo_store/features/auth/presentation/widgets/login/login_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,13 @@ class LoginBody extends StatelessWidget {
             ),
             SizedBox(height: 30.h,),
             const LoginTextForm(),
-        CustomFadeInDown(
+            SizedBox(height: 30.h,),
+
+
+            LoginBottom(),
+            SizedBox(height: 30.h,),
+
+            CustomFadeInDown(
           duration: 400,
           child: TextButton(
             onPressed: () {

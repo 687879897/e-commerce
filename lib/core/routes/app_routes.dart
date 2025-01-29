@@ -1,7 +1,6 @@
 import 'package:asroo_store/core/routes/base_routes.dart';
 import 'package:asroo_store/features/auth/presentation/screens/login_screen.dart';
 import 'package:asroo_store/features/auth/presentation/screens/signup_screen.dart';
-import 'package:asroo_store/features/testone.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../commen/screens/under_build_screen.dart';
