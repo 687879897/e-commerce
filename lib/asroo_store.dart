@@ -1,13 +1,17 @@
 import 'package:asroo_store/core/language/app_localizations_setup.dart';
 import 'package:asroo_store/core/routes/app_routes.dart';
 import 'package:asroo_store/core/style/theme/app_theme.dart';
-import 'package:asroo_store/features/testone.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/app/app_cubit/app_cubit.dart';
 import 'core/app/connectivity_controller.dart';
 import 'core/app/env.variables.dart';
 import 'core/commen/screens/no_network_screen.dart';
+import 'core/di/injection_container.dart';
+import 'core/serviec/shared_pref/pref_keys.dart';
+import 'core/serviec/shared_pref/shared_pref.dart';
 
 class AsrooStoreApp extends StatelessWidget {
   const AsrooStoreApp({super.key});
@@ -17,43 +21,46 @@ class AsrooStoreApp extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: ConnectivityController.instance.isConnected,
       builder: (_, value, __) {
-        
         if (value) {
-          return ScreenUtilInit(
-            designSize: const Size(375,812),
-            child: MaterialApp(
-              title: 'Asroo Store',
-              debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-              theme: themeLight(),
-              locale: const Locale("en"),
-              supportedLocales: AppLocalizationsSetup.supportedLocales,
-              localizationsDelegates:
-              AppLocalizationsSetup.localizationsDelegates,
-              localeResolutionCallback:
-              AppLocalizationsSetup.localeResolutionCallback,
-
-
-              builder: (context, widget) {
-                return GestureDetector(
-                  onTap: (){
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
-                  child: Scaffold(
-                    body: Builder(
-                      builder: (context) {
-                        ConnectivityController.instance.init();
-                        return widget!;
-                      },
-                    ),
-                  ),
-                );
-              },
-              onGenerateRoute: AppRoutes.onGenerateRoute,
-              initialRoute: AppRoutes.login,
-              home: Scaffold(
-                appBar: AppBar(
-                  title: const Text('Asroo Store'),
-                ),
+          return BlocProvider(
+            create: (context) => sl<AppCubit>()
+              ..changeAppThemeMode(
+                sharedMode: SharedPref().getBoolean(PrefKeys.themeMode),
+              )
+              ..getSavedLanguage(),
+            child: ScreenUtilInit(
+              designSize: const Size(375, 812),
+              minTextAdapt: true,
+              child: BlocBuilder<AppCubit, AppState>(
+                buildWhen: (previous, current) {
+                  return previous != current;
+                },
+                builder: (context, state) {
+                  final cubit = context.read<AppCubit>();
+                  return MaterialApp(
+                    title: 'Asroo Store',
+                    debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
+                    theme: cubit.isDark ? themeLight() : themeDark(),
+                    locale: Locale(cubit.currentLangCode),
+                    supportedLocales: AppLocalizationsSetup.supportedLocales,
+                    localizationsDelegates:
+                    AppLocalizationsSetup.localizationsDelegates,
+                    localeResolutionCallback:
+                    AppLocalizationsSetup.localeResolutionCallback,
+                    builder: (context, widget) {
+                      return Scaffold(
+                        body: Builder(
+                          builder: (context) {
+                            ConnectivityController.instance.init();
+                            return widget!;
+                          },
+                        ),
+                      );
+                    },
+                    onGenerateRoute: AppRoutes.onGenerateRoute,
+                    initialRoute: AppRoutes.login,
+                  );
+                },
               ),
             ),
           );

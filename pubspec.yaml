@@ -30,13 +30,24 @@ dependencies:
   flutter_native_splash: ^2.3.7
   animate_do: ^3.3.4
 
+  # dart run build_runner build --delete-conflicting-outputs
+
+  freezed_annotation: ^2.4.4
+  shared_preferences: ^2.2.3
+  get_it: ^8.0.3
+  bloc: ^9.0.0
+  flutter_bloc: ^9.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_launcher_icons: ^0.13.1
+  freezed: ^2.5.2
+
 
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.9
 flutter_icons:
   android: true
   ios: true
