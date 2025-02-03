@@ -36,7 +36,7 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: 30.h,),
 
 
-            LoginBottom(),
+            LoginButton(),
             SizedBox(height: 30.h,),
 
             CustomFadeInDown(

@@ -17,6 +17,7 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._repo) : super(const _Initial()) {
     on<LoginEvent>(_login);
+    on<SignUpEvent>(_signUp);
   }
 
   final AuthRepos _repo;
@@ -48,6 +49,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final user = await _repo.userRole(token);
         await SharedPref().setInt(PrefKeys.userId, user.userId ?? 0);
         await SharedPref().setString(PrefKeys.userRole, user.userRole ?? '');
+
         emit(AuthState.success(userRole: user.userRole ?? ''));
       },
       failure: (error) {
@@ -57,5 +59,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   // signup and login to take user token
+  FutureOr<void> _signUp(
+    SignUpEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.loading());
+    final result = await _repo.signUp(
+      SignUpRequestBody(
+        email: emailController.text.trim(),
+        password: passwordController.text,
+        avatar: event.imagUrl,
+        name: nameController.text.trim(),
+      ),
+    );
 
+    result.when(
+      success: (signupData) {
+        add(const AuthEvent.login());
+      },
+      failure: (error) {
+        emit(AuthState.error(error: error));
+      },
+    );
+  }
 }
