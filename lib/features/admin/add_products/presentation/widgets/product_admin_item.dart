@@ -111,7 +111,7 @@ class ProductAdminItem extends StatelessWidget {
               child: CachedNetworkImage(
                 height: 200.h,
                 width: 120.w,
-                imageUrl: imageUrl.imageProductFormate(),
+                imageUrl: imageUrl,
                 errorWidget: (context, url, error) => const Icon(
                   Icons.error,
                   color: Colors.red,

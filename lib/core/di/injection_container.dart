@@ -4,6 +4,18 @@ import 'package:asroo_store/core/app/app_cubit/app_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/admin/add_categories/data/data_source/categories_admin_data_source.dart';
+import '../../features/admin/add_categories/data/repos/categoreis_admin_repos.dart';
+import '../../features/admin/add_categories/presentation/bloc/create_category/create_category_bloc.dart';
+import '../../features/admin/add_categories/presentation/bloc/delete_category/delete_category_bloc.dart';
+import '../../features/admin/add_categories/presentation/bloc/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import '../../features/admin/add_categories/presentation/bloc/update_category/update_category_bloc.dart';
+import '../../features/admin/add_products/data/data_source/products_admin_data_source.dart';
+import '../../features/admin/add_products/data/repos/products_admin_repo.dart';
+import '../../features/admin/add_products/presentation/bloc/create_product/create_prodcut_bloc.dart';
+import '../../features/admin/add_products/presentation/bloc/delete_product/delete_product_bloc.dart';
+import '../../features/admin/add_products/presentation/bloc/get_all_admin_product/get_all_admin_product_bloc.dart';
+import '../../features/admin/add_products/presentation/bloc/update_product/update_product_bloc.dart';
 import '../../features/admin/dashboard/data/data_soruce/dashboard_data_source.dart';
 import '../../features/admin/dashboard/data/repos/dashboard_repo.dart';
 import '../../features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
@@ -23,6 +35,9 @@ final sl = GetIt.instance;
 Future<void> setupInjector() async {
   await _initCore();
   await _initAuth();
+  await _initDashBoard();
+  await _initCategoriesAdmin();
+  await _initProductsAdmin();
 
 }
 
@@ -51,4 +66,23 @@ Future<void> _initDashBoard() async {
     ..registerFactory(() => ProductsNumberBloc(sl()))
     ..registerFactory(() => CategoriesNumberBloc(sl()))
     ..registerFactory(() => UsersNumberBloc(sl()));
+}
+Future<void> _initCategoriesAdmin() async {
+  sl
+    ..registerLazySingleton(() => CategoreisAdminRepo(sl()))
+    ..registerLazySingleton(() => CategoriesAdminDataSource(sl()))
+    ..registerFactory(() => GetAllAdminCategoriesBloc(sl()))
+    ..registerFactory(() => CreateCategoryBloc(sl()))
+    ..registerFactory(() => DeleteCategoryBloc(sl()))
+    ..registerFactory(() => UpdateCategoryBloc(sl()));
+}
+
+Future<void> _initProductsAdmin() async {
+  sl
+    ..registerLazySingleton(() => ProductsAdminRepo(sl()))
+    ..registerLazySingleton(() => ProductsAdminDataSource(sl()))
+    ..registerFactory(() => GetAllAdminProductBloc(sl()))
+    ..registerFactory(() => CreateProdcutBloc(sl()))
+    ..registerFactory(() => DeleteProductBloc(sl()))
+    ..registerFactory(() => UpdateProductBloc(sl()));
 }
